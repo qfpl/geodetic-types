@@ -9,14 +9,17 @@ module Geodetics.Types.Helmert(
 , SetHelmert(..)
 , FoldHelmert(..)
 , IsHelmert(..)
+, translations
+, rotations
 ) where
 
+import Control.Applicative((<*>))
 import Control.Category((.), id)
 import Control.Lens(Lens', Prism', Traversal', Getter, Setter', Fold, Iso', prism, (^.))
 import Data.Either(Either(Right))
 import Data.Eq(Eq)
 import Data.Ord(Ord)
-import Data.Functor(fmap)
+import Data.Functor(fmap, (<$>))
 import Data.Monoid(Monoid(mempty, mappend))
 import Data.Semigroup(Semigroup((<>)))
 import Numeric.Units.Dimensional.Prelude(Length, Dimensionless, (+), (*~), meter, _0)
@@ -181,3 +184,23 @@ instance Monoid Helmert where
       _0
   mappend =
     (<>)
+
+translations ::
+  Traversal'
+    Helmert
+    (Length Double)
+translations k (Helmert cX' cY' cZ' helmertScale' rX' rY' rZ') =
+  (\cX'' cY'' cZ'' -> Helmert cX'' cY'' cZ'' helmertScale' rX' rY' rZ') <$>
+  k cX' <*>
+  k cY' <*>
+  k cZ'
+
+rotations ::
+  Traversal'
+    Helmert
+    (Dimensionless Double)
+rotations k (Helmert cX' cY' cZ' helmertScale' rX' rY' rZ') =
+  Helmert cX' cY' cZ' helmertScale' <$>
+  k rX' <*>
+  k rY' <*>
+  k rZ'
