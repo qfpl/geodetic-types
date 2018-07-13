@@ -9,6 +9,7 @@ module Geodetics.Types.Ellipsoid(
 , SetEllipsoid(..)
 , FoldEllipsoid(..)
 , IsEllipsoid(..)
+, _GRS80
 ) where
 
 import Control.Category((.), id)
@@ -18,7 +19,7 @@ import Data.Eq(Eq)
 import Data.Ord(Ord)
 import Data.Functor(fmap)
 import Data.Tuple(uncurry)
-import Numeric.Units.Dimensional.Prelude(Length, Dimensionless)
+import Numeric.Units.Dimensional.Prelude(Length, Dimensionless, (*~), meter, one)
 import Prelude(Double, Show)
 
 data Ellipsoid =
@@ -106,3 +107,10 @@ class (HasEllipsoid a, AsEllipsoid a) => IsEllipsoid a where
 instance IsEllipsoid Ellipsoid where
   _IsEllipsoid =
     id
+
+_GRS80 ::
+  Ellipsoid
+_GRS80 =
+  Ellipsoid
+    (6378137.0 *~ meter)
+    (294.25722100882711 *~ one)

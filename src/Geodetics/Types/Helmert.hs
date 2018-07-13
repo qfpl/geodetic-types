@@ -12,12 +12,14 @@ module Geodetics.Types.Helmert(
 ) where
 
 import Control.Category((.), id)
-import Control.Lens(Lens', Prism', Traversal', Getter, Setter', Fold, Iso', prism)
+import Control.Lens(Lens', Prism', Traversal', Getter, Setter', Fold, Iso', prism, (^.))
 import Data.Either(Either(Right))
 import Data.Eq(Eq)
 import Data.Ord(Ord)
 import Data.Functor(fmap)
-import Numeric.Units.Dimensional.Prelude(Length, Dimensionless)
+import Data.Monoid(Monoid(mempty, mappend))
+import Data.Semigroup(Semigroup((<>)))
+import Numeric.Units.Dimensional.Prelude(Length, Dimensionless, (+), (*~), meter, _0)
 import Prelude(Double, Show)
 
 -- | The 7 parameter Helmert transformation. The monoid instance allows composition.
@@ -153,3 +155,29 @@ class (HasHelmert a, AsHelmert a) => IsHelmert a where
 instance IsHelmert Helmert where
   _IsHelmert =
     id
+
+instance Semigroup Helmert where
+  h1 <> h2 =
+    let p x =
+          h1 ^. x + h2 ^. x
+    in  Helmert
+          (p cX)
+          (p cY)
+          (p cZ)
+          (p helmertScale)
+          (p rX)
+          (p rY)
+          (p rZ)
+
+instance Monoid Helmert where
+  mempty =
+    Helmert
+      (0 *~ meter)
+      (0 *~ meter)
+      (0 *~ meter)
+      _0
+      _0
+      _0
+      _0
+  mappend =
+    (<>)
