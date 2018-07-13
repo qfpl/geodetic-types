@@ -10,6 +10,17 @@ module Geodetics.Types.Ellipsoid(
 , FoldEllipsoid(..)
 , IsEllipsoid(..)
 , _GRS80
+, _GRS67
+, _Ans
+, _WGS72
+, _AU1965
+, _Krasovsky1940
+, _International1924
+, _Hayford1909
+, _Airy1830
+, _Everest1830
+, _Clarke1858
+, _Clarke1880
 ) where
 
 import Control.Category((.), id)
@@ -114,3 +125,80 @@ _GRS80 =
   Ellipsoid
     (6378137.0 *~ meter)
     (294.25722100882711 *~ one)
+
+_GRS67 ::
+  Ellipsoid
+_GRS67 =
+  Ellipsoid
+    (6378160 *~ meter)
+    (298.25 *~ one)
+
+_Ans ::
+  Ellipsoid
+_Ans =
+  Ellipsoid
+    (6378160 *~ meter)
+    (298.25 *~ one)
+
+_WGS72 ::
+  Ellipsoid
+_WGS72 =
+  Ellipsoid
+    (6378135 *~ meter)
+    (298.26 *~ one)
+
+_AU1965 ::
+  Ellipsoid
+_AU1965 =
+  Ellipsoid
+    (6378160 *~ meter)
+    (298.25 *~ one)
+
+_Krasovsky1940 ::
+  Ellipsoid
+_Krasovsky1940 =
+  Ellipsoid
+    (6378245 *~ meter)
+    (298.3 *~ one)
+
+_International1924 ::
+  Ellipsoid
+_International1924 =
+  Ellipsoid
+    (6378388 *~ meter)
+    (297 *~ one)
+
+_Hayford1909 ::
+  Ellipsoid
+_Hayford1909 =
+  Ellipsoid
+    (6378388 *~ meter)
+    (297 *~ one)
+
+_Airy1830 ::
+  Ellipsoid
+_Airy1830 =
+  Ellipsoid
+    (6377563.4 *~ meter)
+    (299.32 *~ one)
+
+_Everest1830 ::
+  Ellipsoid
+_Everest1830 =
+  Ellipsoid
+    (6377276.3 *~ meter)
+    (300.8 *~ one)
+
+_Clarke1858 ::
+  Ellipsoid
+_Clarke1858 =
+  Ellipsoid
+    (6378293.645 *~ meter)
+    (294.26 *~ one)
+
+_Clarke1880 ::
+  Ellipsoid
+_Clarke1880 =
+  Ellipsoid
+    (6378249.145 *~ meter)
+    (293.465 *~ one)

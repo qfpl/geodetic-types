@@ -11,8 +11,8 @@ module Geodetics.Types.TRF(
 , IsTRF(..)
 , _WGS84
 , _OSGB36
-, _Clarke
-, _Bessel
+, _Clarke1866
+, _Bessel1841
 ) where
 
 import Control.Category((.), id)
@@ -169,9 +169,9 @@ _OSGB36 =
         (0.8421 *~ arcsecond)
     )
 
-_Clarke ::
+_Clarke1866 ::
   TRF
-_Clarke =
+_Clarke1866 =
   TRF
     (
       Ellipsoid
@@ -189,9 +189,9 @@ _Clarke =
         (0 *~ arcsecond)
     )
 
-_Bessel ::
+_Bessel1841 ::
   TRF
-_Bessel =
+_Bessel1841 =
   TRF
     (
       Ellipsoid
