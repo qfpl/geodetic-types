@@ -15,6 +15,7 @@ import Control.Category((.), id)
 import Control.Lens(Lens', Prism', Traversal', Getter, Setter', Fold, Iso', prism)
 import Data.Either(Either(Right))
 import Data.Eq(Eq)
+import Data.Ord(Ord)
 import Data.Functor(fmap)
 import Data.Tuple(uncurry)
 import Numeric.Units.Dimensional.Prelude(Length, Dimensionless)
@@ -24,7 +25,7 @@ data Ellipsoid =
    Ellipsoid
       (Length Double)         -- majorRadius
       (Dimensionless Double)  -- flatR
-   deriving (Eq, Show)
+   deriving (Eq, Ord, Show)
 
 class (GetEllipsoid a, ManyEllipsoid a) => HasEllipsoid a where
   ellipsoid ::

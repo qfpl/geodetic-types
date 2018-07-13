@@ -15,20 +15,22 @@ import Control.Category((.), id)
 import Control.Lens(Lens', Prism', Traversal', Getter, Setter', Fold, Iso', prism)
 import Data.Either(Either(Right))
 import Data.Eq(Eq)
+import Data.Ord(Ord)
 import Data.Functor(fmap)
 import Numeric.Units.Dimensional.Prelude(Length, Dimensionless)
 import Prelude(Double, Show)
 
 -- | The 7 parameter Helmert transformation. The monoid instance allows composition.
-data Helmert = Helmert
-  (Length Double)
-  (Length Double)
-  (Length Double)
-  (Dimensionless Double)  -- Parts per million
-  (Dimensionless Double)
-  (Dimensionless Double)
-  (Dimensionless Double)
-  deriving (Eq, Show)
+data Helmert =
+  Helmert
+    (Length Double)
+    (Length Double)
+    (Length Double)
+    (Dimensionless Double)  -- Parts per million
+    (Dimensionless Double)
+    (Dimensionless Double)
+    (Dimensionless Double)
+  deriving (Eq, Ord, Show)
 
 class HasHelmert a where
   helmert ::
