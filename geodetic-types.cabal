@@ -12,7 +12,7 @@ license-file:          LICENCE
 author:                Queensland Functional Programming Lab <oᴉ˙ldɟb@llǝʞsɐɥ>
 maintainer:            Queensland Functional Programming Lab <oᴉ˙ldɟb@llǝʞsɐɥ>
 copyright:             Copyright (C) 2018 Commonwealth Scientific and Industrial Research Organisation (CSIRO)
-category:              Geodgraphy
+category:              Geography
 build-type:            Simple
 extra-source-files:    changelog.md
 cabal-version:         >=1.10
