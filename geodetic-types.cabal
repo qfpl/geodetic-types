@@ -30,6 +30,7 @@ library
                        , Geodetics.Types.Ellipsoid
                        , Geodetics.Types.Helmert
                        , Geodetics.Types.Latitude
+                       , Geodetics.Types.LatLon
                        , Geodetics.Types.Longitude
                        , Geodetics.Types.TRF
                        
