@@ -1,7 +1,7 @@
 { mkDerivation, base, dimensional, lens, semigroups, stdenv }:
 mkDerivation {
   pname = "geodetic-types";
-  version = "0.0.1";
+  version = "0.0.2";
   src = ./.;
   libraryHaskellDepends = [ base dimensional lens semigroups ];
   homepage = "https://github.com/qfpl/geodetic-types";
