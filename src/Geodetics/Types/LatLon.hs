@@ -16,8 +16,8 @@ import Control.Lens(Lens', Prism', Traversal', Getter, Setter', Fold, Iso')
 import Data.Eq(Eq)
 import Data.Functor(fmap)
 import Data.Ord(Ord)
-import Geodetics.Types.Latitude(Latitude, HasLatitude(latitude))
-import Geodetics.Types.Longitude(Longitude, HasLongitude(longitude))
+import Geodetics.Types.Latitude(Latitude, HasLatitude(latitude), SetLatitude(_SetLatitude), GetLatitude(_GetLatitude), FoldLatitude(_FoldLatitude), ManyLatitude(_ManyLatitude))
+import Geodetics.Types.Longitude(Longitude, HasLongitude(longitude), SetLongitude(_SetLongitude), GetLongitude(_GetLongitude), FoldLongitude(_FoldLongitude), ManyLongitude(_ManyLongitude))
 import Prelude(Show)
 
 data LatLon =
@@ -30,9 +30,41 @@ instance HasLatitude LatLon where
   latitude f (LatLon lt ln) =
     fmap (\lt' -> LatLon lt' ln) (f lt)
 
+instance SetLatitude LatLon where
+  _SetLatitude =
+    latitude
+
+instance GetLatitude LatLon where
+  _GetLatitude =
+    latitude
+
+instance FoldLatitude LatLon where
+  _FoldLatitude =
+    latitude
+
+instance ManyLatitude LatLon where
+  _ManyLatitude =
+    latitude
+
 instance HasLongitude LatLon where
   longitude f (LatLon lt ln) =
     fmap (\ln' -> LatLon lt ln') (f ln)
+
+instance SetLongitude LatLon where
+  _SetLongitude =
+    longitude
+
+instance GetLongitude LatLon where
+  _GetLongitude =
+    longitude
+
+instance FoldLongitude LatLon where
+  _FoldLongitude =
+    longitude
+
+instance ManyLongitude LatLon where
+  _ManyLongitude =
+    longitude
 
 class HasLatLon a where
   latlon ::
