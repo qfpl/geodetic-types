@@ -1,3 +1,7 @@
+0.0.3
+
+* More instances for `LatLon`.
+
 0.0.2
 
 * Add `LatLon` data type.

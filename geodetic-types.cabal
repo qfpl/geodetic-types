@@ -1,7 +1,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                  geodetic-types
-version:               0.0.2
+version:               0.0.3
 synopsis:              Types for geodetic operations
 description:       
   <<http://i.imgur.com/uZnp9ke.png>>
