@@ -34,7 +34,7 @@ library
                        , Geodetics.Types.Longitude
                        , Geodetics.Types.TRF
                        
-  build-depends:         base              >= 4.8     && < 4.12
+  build-depends:         base              >= 4.8     && < 5
                        , lens              >= 4.15    && < 4.18
                        , dimensional       >= 1.1     && < 1.2
                        , semigroups        >= 0.9     && < 0.19
