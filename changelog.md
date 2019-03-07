@@ -1,3 +1,7 @@
+0.0.4
+
+* `base` version.
+
 0.0.3
 
 * More instances for `LatLon`.
